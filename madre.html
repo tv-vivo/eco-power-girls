@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Mejor Mamá del Mundo</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: 'Comic Sans MS', sans-serif;
+            padding: 50px;
+            color: #6a097d;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f7e9f7;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff6f91;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #6a097d;
+            font-size: 1.5em;
+        }
+        .question {
+            background-color: #fce4ec;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px auto;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.6s, background-color 0.5s;
+        }
+        .question:hover {
+            transform: translateY(-10px);
+            background-color: #f8bbd0;
+        }
+        .options button {
+            background-color: #ff6f91;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .options button:hover {
+            background-color: #ff4b6e;
+            transform: scale(1.1);
+        }
+        .message {
+            display: none;
+            font-size: 1.3em;
+            margin-top: 30px;
+            opacity: 0;
+            transition: opacity 1.5s;
+        }
+        .motivational-message {
+            display: none;
+            background-color: #ffefba;
+            color: #6a097d;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+            animation: floatMessage 2s forwards;
+        }
+        .final-message {
+            display: none;
+            font-size: 1.6em;
+            margin-top: 50px;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        .happy-birthday {
+            display: none;
+            font-size: 2.5em;
+            margin-top: 20px;
+            color: #ff6f91;
+            animation: reveal 3s forwards;
+        }
+        @keyframes reveal {
+            from {opacity: 0; transform: scale(0.9);}
+            to {opacity: 1; transform: scale(1);}
+        }
+        @keyframes floatMessage {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Acertijos para la Mejor Mamá</h1>
+
+        <!-- Primer acertijo -->
+        <div class="question" id="question1">
+            <h2>¿Qué hace mamá cuando quiere un descanso?</h2>
+            <div class="options">
+                <button onclick="checkAnswer(1, true)">¡Planear más tareas!</button>
+                <button onclick="checkAnswer(1, false)">Dormir (¡no tan fácil!)</button>
+                <button onclick="checkAnswer(1, false)">Comer chocolate</button>
+                <button onclick="checkAnswer(1, false)">Hacer yoga... ¡con nosotros encima!</button>
+            </div>
+        </div>
+
+        <!-- Segundo acertijo -->
+        <div class="question" id="question2" style="display: none;">
+            <h2>¿Cuál es el plato favorito de mamá?</h2>
+            <div class="options">
+                
+                <button onclick="checkAnswer(2, false)">Pizza, ¡con doble queso!</button>
+                <button onclick="checkAnswer(2, false)">Sopa (¿en serio?)</button>
+                <button onclick="checkAnswer(2, false)">Puré de papas</button>
+                <button onclick="checkAnswer(2, true)">¡Cualquier cosa que no tenga que cocinar!</button>
+            </div>
+        </div>
+
+        <!-- Tercer acertijo -->
+        <div class="question" id="question3" style="display: none;">
+            <h2>¿Cuál es la frase que más repite mamá?</h2>
+            <div class="options">
+                
+                <button onclick="checkAnswer(3, false)">"Ve a dormir temprano"</button>
+                <button onclick="checkAnswer(3, true)">"¡Te lo dije!"</button>
+                <button onclick="checkAnswer(3, false)">"Lávate las manos"</button>
+                <button onclick="checkAnswer(3, false)">"¿Ya hiciste tu tarea?"</button>
+            </div>
+        </div>
+
+        <!-- Cuarto acertijo -->
+        <div class="question" id="question4" style="display: none;">
+            <h2>¿Cuál es el superpoder secreto de mamá?</h2>
+            <div class="options">
+                <button onclick="checkAnswer(4, true)">Leer la mente (¡cuidado!)</button>
+                <button onclick="checkAnswer(4, false)">Multiplicar el tiempo</button>
+                <button onclick="checkAnswer(4, false)">Correr maratones de supermercado</button>
+                <button onclick="checkAnswer(4, false)">¡Saberlo todo!</button>
+            </div>
+        </div>
+
+        <!-- Mensaje de éxito -->
+        <div class="message" id="successMessage">
+            ¡Eres una mamá increíble! Has resuelto todos los acertijos.
+        </div>
+
+        <!-- Mensaje motivacional -->
+        <div class="motivational-message" id="motivationalMessage">
+            ¡Sigue intentándolo! Eres la mejor, mamá, no te rindas.
+        </div>
+
+        <!-- Mensaje final poético -->
+        <div class="final-message" id="finalMessage">
+            "Querida mamá, tu amor es como un rayo de sol<br>
+            Que ilumina hasta el rincón más oscuro.<br>
+            Tus palabras son poesía, tus abrazos son refugio,<br>
+            Y tu risa, una sinfonía que llena la casa de alegría.<br>
+            No hay montaña demasiado alta cuando estás a nuestro lado,<br>
+            Porque eres nuestro todo, nuestra guía y nuestro amor.<br>
+            Gracias por ser siempre la luz que nunca se apaga.<br>
+            ¡Feliz cumpleaños, mamá de mi corazón!"
+        </div>
+
+        <!-- Mensaje de cumpleaños -->
+        <div class="happy-birthday" id="birthdayMessage">
+            ¡Feliz cumpleaños, Mamá!
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+
+        function checkAnswer(question, isCorrect) {
+            if (isCorrect) {
+                document.getElementById(`question${question}`).style.display = 'none';
+                currentQuestion++;
+                if (currentQuestion <= 4) {
+                    document.getElementById(`question${currentQuestion}`).style.display = 'block';
+                } else {
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('successMessage').style.opacity = 1;
+                    setTimeout(showFinalMessage, 2000);
+                }
+            } else {
+                document.getElementById('motivationalMessage').style.display = 'block';
+                setTimeout(function() {
+                    document.getElementById('motivationalMessage').style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        function showFinalMessage() {
+            document.getElementById('finalMessage').style.display = 'block';
+            document.getElementById('finalMessage').style.opacity = 1;
+            setTimeout(showBirthdayMessage, 3000);
+        }
+
+        function showBirthdayMessage() {
+            document.getElementById('birthdayMessage').style.display = 'block';
+        }
+    </script>
+</body>
+  </html>
